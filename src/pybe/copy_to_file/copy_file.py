@@ -13,6 +13,7 @@
 # Even text files offer no guarantees that the text isn't on one line.
 
 import sys
+import os
 
 def copy_function(file_name1, file_name2):
     #print(f"Name of the script      : {sys.argv[0]=}")
@@ -30,7 +31,9 @@ def copy_function(file_name1, file_name2):
         f_combined_text = open(arr[1], "ab")
     except:
         print("Something went wrong when opening the file to append")
-
+    file1_size = os.path.getsize(file_name1)
+    file2_size = os.path.getsize(file_name2)
+    print(f"file 1 size: {file1_size} file 2 size {file2_size}")
 
     chunk_size=1024   
     while True:
@@ -43,5 +46,10 @@ def copy_function(file_name1, file_name2):
             break
         f_combined_text.write(data)
 
+    return file1_size
 
-
+def size_compare(file_name1, file_name2):
+    size_pre = copy_function(file_name1, file_name2)
+    file2_size_post = os.path.getsize(file_name2)
+    print(f"post cp {file2_size_post}")
+    return(file2_size_post)

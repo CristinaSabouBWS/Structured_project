@@ -1,6 +1,6 @@
 from pybe.binary_search.get_index import get_index_from_file
 from pybe.combine_list.combine_lists import combined_sorted_list
-from pybe.copy_to_file.copy_file import copy_function
+from pybe.copy_to_file.copy_file import size_compare
 from pybe.fibonacci.fibo_number import fibonacci_iterative, fibonacci_recursive
 from pybe.prime_numbers.prime_list import prime_list
 from pybe.fibonacci.fibo_number import fibonacci_recursive, fibonacci_iterative
@@ -38,4 +38,5 @@ def test_number_of_words():
     assert number_of_words(words) == 6
 
 def test_cp_emulation():
-    assert copy_function("/Users/bws/work/newproject/src/pybe/copy_to_file/text1.txt","/Users/bws/work/newproject/src/pybe/copy_to_file/text2.txt") == 23454
+    x = size_compare("/Users/bws/work/newproject/src/pybe/copy_to_file/text1.txt","/Users/bws/work/newproject/src/pybe/copy_to_file/text2.txt")
+    assert x == 1051

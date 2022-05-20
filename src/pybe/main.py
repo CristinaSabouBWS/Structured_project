@@ -5,7 +5,7 @@ from pybe.fibonacci.fibo_number import print_fibo
 from pybe.divisors.divisors import print_divisors
 from pybe.combine_list.combine_lists import combined_sorted_list
 from pybe.text_analysis.text_analysis import print_phone_numbers, read_file, number_of_words, top_five_words, words_occurance, unique_words
-
+from pybe.copy_to_file.copy_file import copy_function, size_compare
 # #Binary search
 # x = get_index_from_file("/Users/bws/work/newproject/src/pybe/binary_search/input.txt")
 
@@ -32,5 +32,5 @@ from pybe.text_analysis.text_analysis import print_phone_numbers, read_file, num
 # top_5 = top_five_words(occurace_dict)
 # phone_count = print_phone_numbers(read_file("/Users/bws/work/newproject/src/pybe/text_analysis/text_article.txt"))
 
-
+size = size_compare("/Users/bws/work/newproject/src/pybe/copy_to_file/text1.txt","/Users/bws/work/newproject/src/pybe/copy_to_file/text2.txt")
 
