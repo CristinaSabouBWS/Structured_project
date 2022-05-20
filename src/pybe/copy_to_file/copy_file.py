@@ -14,9 +14,10 @@
 
 import sys
 
-def copy_function():
-    print(f"Name of the script      : {sys.argv[0]=}")
-    arr = sys.argv[1:]
+def copy_function(file_name1, file_name2):
+    #print(f"Name of the script      : {sys.argv[0]=}")
+    #arr = sys.argv[1:]
+    arr = [file_name1, file_name2]
     if len(arr) < 2:
         raise TypeError("Error, did not enter 2 arguments")
 

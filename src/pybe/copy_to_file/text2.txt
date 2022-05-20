@@ -1,0 +1,2 @@
+The special path name :memory: can be provided to create a temporary database in RAM.
+Once a Connection has been established, create a Cursor object and call its execute() method to perform SQL commands:

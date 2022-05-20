@@ -9,54 +9,48 @@
 
 
 #Read a line, transform it and save it as a list of strings
-def read_file():
-    f = open("input.txt", "r")
+def read_file(file_name):
+    f = open(file_name, "r")
 
     # Read all file in an list of lines
-    lines = f.readlines()
-
+    read_text = f.read()
+    
     #Define characters that have a space after (asumption)
-    char1 = [".", ",", ";", "?", "!"]                                                       #how to remove the \n from lines? mandatory to fix for word_occurance to work as expected
-    #Define characters that should be replaced with a space                                 #will add a "" to the list when 2 spaces and not remove when <3 char
-    char2 = ["-", "_", "+", "/", "*", "\"", "'"]
+    char_to_remove = [".", ",", ";", "?", "!"]                                                      
+    #Define characters that should be replaced with a space                                
+    char_to_replace = ["-", "_", "+", "/", "*", "\"", "'"]
 
-    line_counter = -1  #to count the lines read from file
-    for line in lines: #for each line in array
-        line_counter +=1
-        for character in line:  #for each character in the line
-            if character in char1:
-                line = line.replace(character,"")
-            elif character in char2:
-                line = line.replace(character," ")
-
-        line = line.split(" ") #line is now a list of words
-        # remove words <3 char                                                              # do remove numbers?
-        for word in line:
-            if len(word) < 3:                                                               #see why 'a' is not removed - affects word_occurance
-                line.remove(word)
-
-        lines[line_counter] = line #replace curent lines with the updated lists of words
-    print(lines)
-    return lines
+    #read_text = read_text.rstrip()
+    
+    for character in read_text:
+        if character in char_to_remove:
+            read_text = read_text.replace(character,"")
+        elif character in char_to_replace:
+            read_text = read_text.replace(character," ")
+    
+    read_text = read_text.split(" ") #line is now a list of words
+    
+    # remove words <3 char   
+    final_word_list = []                                                           
+    for word in read_text:
+        if len(word) >= 3:                                                               
+            final_word_list.append(word)
+    
+    return final_word_list
 
 
 def number_of_words(arr):
-    count = 0
-    for line in arr:
-        for word in line:
-            if len(word) > 2:                                                               #keep for now, but remove when 'a' is dealt with (the index is skiped)
-                count += 1
-    print(f"How many words are there in total? {count}") 
+    words_count = len(arr)
+    print(f"How many words are there in total? {words_count}") 
+    return words_count
 
 def words_occurance(arr):                                                                   # counts the "a" error!
     word_counter= {}
-    for line in arr:
-        for word in line:
-            if word in word_counter:
-                word_counter[word] += 1
-            else:
-                word_counter[word] = 1
-    print(word_counter)
+    for word in arr:
+        if word in word_counter:
+            word_counter[word] += 1
+        else:
+            word_counter[word] = 1
     return word_counter
 
 def unique_words(dict):
@@ -65,13 +59,15 @@ def unique_words(dict):
         if dict[i] == 1:
             unique_words_counter +=1 
     print(f"unique words: {unique_words_counter}")
+    return unique_words_counter
 
-#assume the values don't matter. Re-do for categories print
+# assume the values don't matter. Re-do for categories print
 def top_five_words(dict):
     print("top 5 words:")
     marklist = sorted(dict.items(), key=lambda x:x[1], reverse = True)                              #read more on use
     for i in range(0, 5):
         print(marklist[i])
+    return marklist
 
     
 def all_10_numbers(word):
@@ -85,26 +81,15 @@ def all_10_numbers(word):
     else: 
         return False
         
-#assume phone numbers are one word
+# #assume phone numbers are one word
 def print_phone_numbers(arr):
     print("phone numbers in text:")
     count = 0
-    for line in arr:
-        for word in line:
-            if all_10_numbers(word):
-                print(word)
-                count +=1
+
+    for word in arr:
+        if all_10_numbers(word):
+            print(word)
+            count +=1
     if count == 0:
         print("no phone nb")
-
-
-
-
-# if __name__ == "__main__" :
-
-#     list_of_lines_of_words = read_file()
-#     number_of_words(list_of_lines_of_words)
-#     z = words_occurance(list_of_lines_of_words)
-#     unique_words(z)
-#     top_five_words(z)
-#     print_phone_numbers(list_of_lines_of_words)
+    return count
