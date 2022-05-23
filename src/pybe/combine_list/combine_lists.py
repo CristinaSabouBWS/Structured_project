@@ -20,8 +20,8 @@ def combine(sorted_list_1, sorted_list_2):
         j += 1
     return combined_list
 
-def combined_sorted_list():
-    f = open("src/pybe/combine_list/input_sorted_list.txt", "r")
+def combined_sorted_list(file_name):
+    f = open(file_name, "r")
     sorted_string_1 = f.readline()
     sorted_string_2 = f.readline()
     sorted_string_1 = sorted_string_1.strip()
