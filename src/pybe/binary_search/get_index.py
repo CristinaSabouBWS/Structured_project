@@ -1,9 +1,9 @@
 from pybe.binary_search.index_search import find_index
 
 # Read the number and the list and returns the index of the number in the list       
-def get_index_from_file(file_name):
+def get_index_from_file():
     # Open input.txt to read lines
-    f = open(file_name, "r")
+    f = open("src/pybe/binary_search/input.txt", "r")
 
     # Read the first line to a number
     given_number = int((f.readline()))
